@@ -1,0 +1,28 @@
+{% extends 'user/base.html'%}
+{% load static %}
+
+{%block title%}Product List {%endblock%}
+
+
+{%block body%}
+
+<div class="container p-4">
+    <div class="row">
+        {%if cart_data%}
+        <div class="card mb-3">
+            <img class="card-img-top" src="{{item.item_product.photo.url}}" alt="Card image cap" height="100px" width="100px">
+            <div class="card-body">
+              <h5 class="card-title">{{item.item_product.name}}</h5>
+              <p class="card-text">{{item.item_product.description}}</p>
+              <p class="card-text">Total :-<small class="text-muted">{{item.item_count}}</small></p>
+              <a href="{%url 'cart_add' item.item_product.id%}" class="btn btn-primary">Add</a>
+              <a href="{%url 'cart_remove' item.item_product.id%}" class="btn btn-primary">Remove</a>
+            </div>
+        </div>
+        {%else%}
+        <p>Please add the item</p>
+        {%endif%}
+
+    </div>
+</div>       
+{%endblock%}

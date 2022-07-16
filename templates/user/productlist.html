@@ -1,0 +1,28 @@
+{% extends 'user/base.html'%}
+{% load static %}
+
+{%block title%}Product List {%endblock%}
+
+
+{%block body%}
+
+<div class="container p-4">
+    <div class="row">
+        {%for product in product%}
+        <div class="col-sm-4">
+          <div class="card">
+            <img class="card-img-top" src="{{product.photo.url}}" alt="Card image cap" height="100px" width="100px">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">{{product.description}}</p>
+              <button type="button" class="btn btn-primary">{{product.code}}</button>
+              <button type="button" class="btn btn-primary">AED {{product.price}}</button>
+              <a type="button" href="{%url 'product_add' product.id%}" class="btn btn-primary">Add to Card</a>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>       
+
+{%endblock%}
